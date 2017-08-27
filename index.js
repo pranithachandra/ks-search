@@ -4,7 +4,7 @@ var ELASTIC = config.get('elasticSearchUrl') || 'localhost';
 var Seneca = require('seneca')
 
 const amqpUrl = config.has("rabbitmqCloudUrl") ? config.get("rabbitmqCloudUrl") : `amqp://${config.get('rabbitmq.username')}:${config.get('rabbitmq.password')}@${config.get('rabbitmq.host')}:${config.get('rabbitmq.port')}`;
-const patternPin = 'role:suggest';
+const patternPin = 'role:search';
 
 
 Seneca({ tag: 'search' })
