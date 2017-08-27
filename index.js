@@ -8,6 +8,7 @@ const patternPin = 'role:suggest';
 
 
 Seneca({ tag: 'search' })
+    .use('seneca-amqp-transport')
     .listen({
         type: 'amqp',
         url: amqpUrl,
@@ -18,11 +19,10 @@ Seneca({ tag: 'search' })
         elastic: {
             host: ELASTIC
         }
-    })
-    .ready(function() {
-        this.add('role:search,cmd:search', function(msg, reply) {
-            this.prior(msg, reply)
-
+    });
+/*.ready(function() {
+    this.add('role:search,cmd:search', function(msg, reply) {
+        this.prior(msg, reply)
             //  this.act('role:suggest,cmd:add', { query: msg.query, default$: {} })
-        })
     })
+})*/
